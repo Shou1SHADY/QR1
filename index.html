@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jimmy Adventures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Avatar */
+    .avatar-wrap {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f6c90e, #e94560, #0f3460);
+      z-index: 0;
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e94560, #f6c90e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      border: 3px solid #1a1a2e;
+    }
+
+    .name {
+      color: #fff;
+      font-size: 1.45rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    .bio {
+      color: #a0aec0;
+      font-size: 0.85rem;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* Links */
+    .links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+    .link-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: rgba(255,255,255,0.06);
+      transition: opacity 0.18s;
+    }
+    .link-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
+    .link-btn:hover::after { opacity: 1; }
+    .link-btn:active { transform: scale(0.98); }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+
+    /* Per-platform colours */
+    .btn-phone   { border-left: 3px solid #43e97b; }
+    .btn-phone   .icon { background: linear-gradient(135deg,#43e97b,#38f9d7); }
+    .btn-tiktok  { border-left: 3px solid #010101; }
+    .btn-tiktok  .icon { background: linear-gradient(135deg,#010101,#69c9d0); }
+    .btn-whatsapp{ border-left: 3px solid #25d366; }
+    .btn-whatsapp .icon { background: linear-gradient(135deg,#25d366,#128c7e); }
+    .btn-insta   { border-left: 3px solid #e1306c; }
+    .btn-insta   .icon { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+    .btn-fb      { border-left: 3px solid #1877f2; }
+    .btn-fb      .icon { background: linear-gradient(135deg,#1877f2,#0d5ed9); }
+    .btn-web     { border-left: 3px solid #f6c90e; }
+    .btn-web     .icon { background: linear-gradient(135deg,#f6c90e,#f0a500); }
+
+    .btn-label { flex: 1; }
+
+    .arrow {
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    /* Footer */
+    .footer {
+      color: rgba(255,255,255,0.25);
+      font-size: 0.72rem;
+      margin-top: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar-wrap">
+      <div class="avatar">🌍</div>
+    </div>
+
+    <p class="name">Jimmy Adventures</p>
+    <p class="bio">Explore the world with me ✈️<br/>Travel • Adventure • Life</p>
+
+    <div class="links">
+
+      <a href="tel:01009124513" class="link-btn btn-phone">
+        <span class="icon">📞</span>
+        <span class="btn-label">Call Us</span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a href="https://www.tiktok.com/@gamalabdallah36?_t=8cENTaJdKti&_r=1"
+         target="_blank" rel="noopener" class="link-btn btn-tiktok">
+        <span class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.19 8.19 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/>
+          </svg>
+        </span>
+        <span class="btn-label">TikTok</span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a href="https://api.whatsapp.com/send?phone=201009124513&fbclid=IwAR2x7ZbG5BcoG43LapibGc7QtbmeaRPkqngahsHz5E8I3LO8bprAVX7HBLY"
+         target="_blank" rel="noopener" class="link-btn btn-whatsapp">
+        <span class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.5l5.79-1.519A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.87 0-3.618-.51-5.12-1.395l-.368-.218-3.817 1.002.982-3.736-.24-.386A9.942 9.942 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+        </span>
+        <span class="btn-label">WhatsApp</span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a href="https://www.instagram.com/jimmy_adventure123?igsh=ZnJpeGxiYWdlaGRx"
+         target="_blank" rel="noopener" class="link-btn btn-insta">
+        <span class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </span>
+        <span class="btn-label">Instagram</span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a href="https://www.facebook.com/profile.php?id=100057482078114"
+         target="_blank" rel="noopener" class="link-btn btn-fb">
+        <span class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </span>
+        <span class="btn-label">Facebook</span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a href="https://jimmysadventure.netlify.app/"
+         target="_blank" rel="noopener" class="link-btn btn-web">
+        <span class="icon">🌐</span>
+        <span class="btn-label">Website</span>
+        <span class="arrow">›</span>
+      </a>
+
+    </div>
+
+    <p class="footer">© 2026 Jimmy Adventures</p>
+  </div>
+</body>
+</html>
